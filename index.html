@@ -401,5 +401,19 @@ document.querySelectorAll('.dropdown .dropdown-content a').forEach(link => {
 <div id="img-modal" class="img-modal">
     <img src="" alt="Ampliada">
 </div>
+<script>
+const password = "2025"; // Cambia la contraseña
+
+function pedirPassword() {
+    const entrada = prompt("Introduce la contraseña para acceder a la Wishlist:");
+    if (entrada !== password) {
+        alert("Contraseña incorrecta. No tienes acceso.");
+        document.body.innerHTML = "<h2>Acceso denegado</h2>"; // Borra contenido si falla
+    }
+}
+
+window.onload = pedirPassword;
+</script>
+
 </body>
 </html>

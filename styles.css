@@ -391,3 +391,116 @@ body {
 .img-modal.active {
     display: flex;
 }
+/* ===== ESTILOS MÓVIL (solo hasta 768px) ===== */
+@media (max-width: 768px) {
+
+    /* Header centrado y compacto */
+    .header {
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        padding: 15px 10px;
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 1000;
+        background-color: #fff;
+        box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+    }
+
+    /* Logo centrado */
+    .logo h1 {
+        font-size: 34px;
+        text-align: center;
+        margin-bottom: 10px;
+        letter-spacing: 2px;
+    }
+
+    /* Carrito arriba a la derecha */
+    .user-menu {
+        position: center;
+        top: 30px;
+        right: 15px;
+        display: flex;
+        gap: 15px;
+    }
+
+    .user-menu a {
+        color: #333;
+        text-decoration: none;
+        font-size: 16px;
+        font-weight: 500;
+    }
+
+    /* Menú horizontal debajo del logo */
+    .nav-menu {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        margin-top: 2px;
+    }
+
+    .nav-menu .dropdown {
+        margin: 0 10px;
+    }
+
+    .nav-menu .dropdown-btn {
+        font-size: 16px;
+        font-weight: 600;
+        color: #333;
+        background: none;
+        border: none;
+        text-transform: uppercase;
+        cursor: pointer;
+    }
+
+    /* Ocultar flecha de dropdown en móvil */
+    .dropdown-btn::after {
+        content: none;
+    }
+
+    /* Dropdown content (desplegable) */
+    .dropdown-content {
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: #fff;
+        box-shadow: 0 5px 10px rgba(0,0,0,0.15);
+        border-radius: 6px;
+        display: none;
+        flex-direction: column;
+        min-width: 140px;
+        z-index: 1000;
+    }
+
+    .dropdown.active .dropdown-content {
+        display: flex;
+    }
+
+    .dropdown-content a {
+        padding: 10px 15px;
+        font-size: 15px;
+        color: #333;
+        text-align: center;
+        text-decoration: none;
+    }
+
+    .dropdown-content a:hover {
+        background-color: #f0f0f0;
+    }
+
+    /* Carousel ajustado para móvil */
+    .carousel {
+        height: 55vh;
+        margin-top: 120px; /* espacio debajo del header fijo */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .carousel-image {
+        width: 100%;
+        object-fit: cover;
+    }
+}
