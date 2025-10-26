@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Casa-Top</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="manifest" href="manifest.json">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+</head>
+<body>
+
+    <!-- HEADER NUEVO -->
+    <header class="header">
+        <div class="logo">
+            <h1>Casa-Top</h1>
+        </div>
+        <div class="hamburger" id="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <nav class="nav-menu" id="nav-menu">
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="Amparo-Es precís.html">Amparo Precís</a></li>
+                <li><a href="Amparo-Secundari.html">Amparo Secundari</a></li>
+                <li><a href="Amparo-La vida que me merezco.html">Amparo Vida</a></li>
+                <li><a href="Manu-Es precís.html">Manu Precís</a></li>
+                <li><a href="Manu-Secundari.html">Manu Secundari</a></li>
+                <li><a href="Manu-GAS.html">Manu GAS</a></li>
+                <li><a href="Casa-Precís.html">Casa Precís</a></li>
+                <li><a href="Casa-Secundari.html">Casa Secundari</a></li>
+                <li><a href="Casa-Top.html">Casa Top</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- BARRA DE EDICIÓN -->
+    <main>
+        <div class="edit-bar">
+            <input type="text" id="item-name" placeholder="Nombre del artículo">
+            <input type="text" id="item-link" placeholder="Enlace">
+            <input type="number" id="item-price" placeholder="Precio">
+            <button id="add-item">Añadir</button>
+        </div>
+
+        <ul id="wishlist">
+            <!-- Items añadidos -->
+        </ul>
+
+        <!-- COLLAGE (solo si quieres, opcional) -->
+        <div class="collage-bar">
+            <input type="file" id="collage-upload" multiple>
+            <div class="collage-grid" id="collage-grid"></div>
+        </div>
+    </main>
+
+    <!-- SCRIPT HAMBURGUESA + LISTA + COLLAGE -->
+    <script>
+    // HAMBURGUESA
+    const hamburger = document.getElementById('hamburger');
+    const navMenu = document.getElementById('nav-menu');
+    hamburger.addEventListener('click', ()=> navMenu.classList.toggle('active'));
+
+    // LISTA LOCALSTORAGE
+    const addBtn = document.getElementById('add-item');
+    const wishlist = document.getElementById('wishlist');
+    let items = JSON.parse(localStorage.getItem('wishlist')) || [];
+    function renderList(){
+        wishlist.innerHTML='';
+        items.forEach((i,idx)=>{
+            const li=document.createElement('li');
+            li.innerHTML=`${i.name} - <a href="${i.link}" target="_blank">Enlace</a> - €${i.price} <button onclick="removeItem(${idx})">❌</button>`;
+            wishlist.appendChild(li);
+        });
+    }
+    function removeItem(idx){
+        items.splice(idx,1);
+        localStorage.setItem('wishlist',JSON.stringify(items));
+        renderList();
+    }
+    addBtn.addEventListener('click',()=>{
+        const name=document.getElementById('item-name').value;
+        const link=document.getElementById('item-link').value;
+        const price=document.getElementById('item-price').value;
+        if(name && link && price){
+            items.push({name,link,price});
+            localStorage.setItem('wishlist',JSON.stringify(items));
+            renderList();
+            document.getElementById('item-name').value='';
+            document.getElementById('item-link').value='';
+            document.getElementById('item-price').value='';
+        }
+    });
+    renderList();
+
+    // COLLAGE LOCALSTORAGE
+    const collageUpload=document.getElementById('collage-upload');
+    const collageGrid=document.getElementById('collage-grid');
+    let collageItems=JSON.parse(localStorage.getItem('collage'))||[];
+    function renderCollage(){
+        collageGrid.innerHTML='';
+        collageItems.forEach((src,idx)=>{
+            const div=document.createElement('div');
+            div.classList.add('collage-item');
+            div.innerHTML=`<img src="${src}" alt="collage"><button onclick="removeCollage(${idx})">❌</button>`;
+            collageGrid.appendChild(div);
+        });
+    }
+    function removeCollage(idx){
+        collageItems.splice(idx,1);
+        localStorage.setItem('collage',JSON.stringify(collageItems));
+        renderCollage();
+    }
+    collageUpload.addEventListener('change', e=>{
+        Array.from(e.target.files).forEach(file=>{
+            const reader=new FileReader();
+            reader.onload=()=>{collageItems.push(reader.result);
+                localStorage.setItem('collage',JSON.stringify(collageItems));
+                renderCollage();}
+            reader.readAsDataURL(file);
+        });
+    });
+    renderCollage();
+    </script>
+    <script src="dropdown.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,393 @@
+/* ==== RESET ==== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  background-color: #f8f8f8;
+  overflow-x: hidden;
+}
+
+/* ==== HEADER ==== */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: white;
+  padding: 10px 30px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  position: relative;
+  z-index: 10;
+}
+
+.logo h1 {
+  font-size: 24px;
+  letter-spacing: 2px;
+}
+
+.nav-menu {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.dropdown {
+  position: relative;
+}
+
+.dropdown-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: white;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  min-width: 150px;
+  border-radius: 4px;
+}
+
+.dropdown.active .dropdown-content {
+  display: block;
+}
+
+.dropdown-content a {
+  display: block;
+  padding: 10px;
+  text-decoration: none;
+  color: #333;
+}
+
+.dropdown-content a:hover {
+  background: #eee;
+}
+
+/* ==== USER MENU ==== */
+.user-menu {
+  display: flex;
+  gap: 20px;
+}
+
+.user-menu a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 600;
+}
+
+.user-menu a:hover {
+  color: #000;
+}
+
+/* ==== CARRUSEL ==== */
+.carousel {
+  width: 100%;
+  height: 60vh;
+  overflow: hidden;
+  position: relative;
+}
+
+.carousel img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: opacity 0.5s ease;
+}
+
+/* ==== PANEL DINÁMICO ==== */
+#panel-container {
+  position: relative;
+  z-index: 5;
+  text-align: center;
+  padding: 20px;
+}
+
+.panel {
+  display: none;
+  background: rgba(255,255,255,0.9);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  max-width: 800px;
+  margin: 30px auto;
+}
+
+.panel.active {
+  display: block;
+}
+
+.input-area {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  margin-bottom: 15px;
+}
+
+.input-area input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.add-btn {
+  padding: 10px 20px;
+  background: black;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.add-btn:hover {
+  background: #444;
+}
+
+.list {
+  list-style: none;
+  padding: 0%;
+  margin-top: 10px;
+}
+
+.list li {
+  display: flex;
+  align-self: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 8px 12px;
+  border-bottom: 1px solid #ddd;
+  word-break: break-word; /*para que las frases larga no salgan del contenedor*/
+}
+
+.list li span {
+  flex: 1; /* Ocupa todo el espacio disponible*/
+}
+
+/* === Estilos para las listas de productos === */
+.list img {
+  max-width: 60px;
+  max-height: 60px;
+  margin-left: 10px;
+  border-radius: 4px;
+}
+
+.list .list-item {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Botón de cerrar en panel */
+.panel .close-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    background: transparent;
+    border: none;
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+    color: #333;
+    transition: color 0.2s;
+}
+
+.panel .close-btn:hover {
+    color: #000;
+}
+/* === PANEL CARRITO === */
+.carrito-panel {
+    position: fixed;
+    right: -400px;
+    top: 0;
+    width: 350px;
+    height: 100vh;
+    background: #fff;
+    box-shadow: -4px 0 15px rgba(0,0,0,0.2);
+    transition: right 0.3s ease;
+    z-index: 2000;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+
+.carrito-panel.activo {
+    right: 0;
+}
+
+.carrito-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.cerrar-carrito {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+#carrito-lista {
+    flex-grow: 1;
+    overflow-y: auto;
+    list-style: none;
+    padding: 0;
+}
+
+#carrito-lista li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #eee;
+    padding: 10px 0;
+}
+
+#carrito-lista li img {
+    max-width: 50px;
+    border-radius: 5px;
+}
+
+.vaciar-carrito {
+    background: #000;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 6px;
+}
+/* Panel flotante sobre el carrusel */
+.wishlist-overlay {
+    position: absolute;
+    top: 10%;
+    left: 5%; /*lado donde aparece*/
+    background: rgba(255, 255, 255, 0.5); /*opacidad del panel lista wishlist*/
+    padding: 10px 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.5);
+    width: 400px; /*Largo del panel wishlist*/
+    max-height: 300px;
+    overflow-y: auto;
+    z-index: 10;
+    display: none; /*Hace invisible el panel*/
+}
+
+.wishlist-overlay h3 {
+    margin-bottom: 0px;
+    font-size: 1.2rem;
+    text-align: left;
+}
+
+.wishlist-overlay ul {
+    list-style: none;
+    padding: 0;
+}
+
+.wishlist-overlay li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 6px;
+    font-size: 14px;
+}
+
+.wishlist-overlay li img {
+    max-width: 40px;
+    max-height: 40px;
+    border-radius: 4px;
+}
+.wishlist-overlay .close-btn {
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  color: #333;
+}
+.wishlist-overlay .close-btn:hover {
+  color: red;
+}
+#wishlist-form {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-bottom: 10px;
+}
+
+#wishlist-form input {
+    padding: 5px 8px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+#wishlist-form button {
+    padding: 6px 10px;
+    font-size: 14px;
+    cursor: pointer;
+    background: #333;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+}
+
+#wishlist-form button:hover {
+    background: #555;
+}
+/* Lista de productos dentro del panel */
+.list .list-item {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 8px;
+}
+
+/* Miniatura de la imagen */
+.list .list-item img {
+    max-width: 60px;
+    max-height: 60px;
+    border-radius: 4px;
+    cursor: pointer; /* Indica que es clicable */
+    transition: transform 0.2s;
+}
+
+.list .list-item img:hover {
+    transform: scale(1.1); /* efecto ligero al pasar el ratón */
+}
+
+/* Modal para imagen ampliada */
+.img-modal {
+    display: none; /* oculto por defecto */
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.8);
+    justify-content: center;
+    align-items: center;
+}
+
+.img-modal img {
+    max-width: 90%;
+    max-height: 90%;
+    border-radius: 6px;
+}
+
+.img-modal.active {
+    display: flex;
+}

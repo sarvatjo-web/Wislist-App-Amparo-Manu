@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wishlist</title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="styles.css">
+
+  <!-- Manifest PWA -->
+  <link rel="manifest" href="manifest.json">
+  <link rel="apple-touch-icon" sizes="180x180" href="img/icon-192.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="img/icon-192.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="img/icon-512.png">
+
+  <!-- PWA iOS -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+</head>
+
+<body>
+  <!-- HEADER -->
+  <header class="header">
+    <div class="logo">
+      <h1>WISHLIST</h1>
+    </div>
+
+    <nav class="nav-menu">
+      <!-- AMPARO -->
+      <div class="dropdown">
+        <button class="dropdown-btn">AMPARO</button>
+        <div class="dropdown-content">
+          <a href="amparo-es-precis.html">Es precis</a>
+          <a href="amparo-secundari.html">Secundari</a>
+          <a href="amparo-la-vida-que-merezco.html">La vida que merezco</a>
+        </div>
+      </div>
+
+      <!-- MANU -->
+      <div class="dropdown">
+        <button class="dropdown-btn">MANU</button>
+        <div class="dropdown-content">
+          <a href="manu-es-precis.html">Es precis</a>
+          <a href="manu-secundari.html">Secundari</a>
+          <a href="manu-gas.html">GAS</a>
+        </div>
+      </div>
+
+      <!-- CASA -->
+      <div class="dropdown">
+        <button class="dropdown-btn">CASA</button>
+        <div class="dropdown-content">
+          <a href="casa-precis.html">Precís</a>
+          <a href="casa-secundari.html">Secundari</a>
+          <a href="casa-top.html">Top</a>
+        </div>
+      </div>
+    </nav>
+
+    <div class="user-menu">
+      <!--<a href="#" id="search-btn">Buscar</a> -->
+      <a href="#" id="cart-btn">Compres del mes</a>
+    </div>
+  </header>
+
+  <!-- CAROUSEL -->
+<section class="carousel">
+    <img src="img/image1.jpg" alt="imagen del carrusel" class="carousel-image">
+
+    <!-- Panel dinámico de Wishlist -->
+    <div id="wishlist-panel" class="wishlist-overlay">
+        <button class="close-btn">✕</button>
+        <h3 id="wishlist-title">Mis Wishlist</h3>
+        <form id="wishlist-form">
+    <input type="text" id="item-name" placeholder="Nombre del producto" required>
+    <input type="url" id="item-url" placeholder="Enlace (opcional)">
+    <input type="text" id="item-image" placeholder="URL imagen (opcional)">
+    <input type="number" id="item-price" placeholder="Precio (opcional)">
+    <button type="submit">Añadir</button>
+</form>
+        <ul id="wishlist-list"></ul>
+    </div>
+</section> 
+  
+  <!-- PANEL DINÁMICO 
+  <section id="panel-container">
+    <div id="amparo-es-precis" class="panel">
+      <h2>Amparo - Es Precís</h2>
+      <button class="close-btn">x</button>
+      <div class="input-area">
+        <input type="text" placeholder="Descripción o producto">
+        <input type="url" placeholder="URL o enlace">
+        <input type="text" placeholder="Precio o comentario">
+        <button class="add-btn">Añadir</button>
+      </div>
+      <ul class="list"></ul>
+    </div> 
+
+    <div id="amparo-secundari" class="panel">
+      <h2>Amparo - Secundari</h2>
+      <button class="close-btn">x</button>
+      <div class="input-area">
+        <input type="text" placeholder="Descripción o producto">
+        <input type="url" placeholder="URL o enlace">
+        <input type="text" placeholder="Precio o comentario">
+        <button class="add-btn">Añadir</button>
+      </div>
+      <ul class="list"></ul>
+    </div> -->
+
+    <div id="amparo-la-vida-que-merezco" class="panel">
+      <h2>Amparo - La vida que merezco</h2>
+      <button class="close-btn">x</button>
+      <p>Zona creativa tipo collage (próximamente)</p>
+    </div>
+
+    <!-- MANU - ES PRECIS 
+<div id="manu-es-precis" class="panel">
+  <h2>Manu - Es precís</h2>
+  <button class="close-btn">x</button>
+  <div class="input-area">
+    <input class="input-desc" type="text" placeholder="Descripción o nombre del producto">
+    <input class="input-url" type="url" placeholder="URL o enlace (opcional)">
+    <input class="input-img" type="text" placeholder="URL imagen (opcional)">
+    <button class="add-btn">Añadir</button>
+  </div>
+  <ul class="list"></ul>
+</div> -->
+
+<!-- MANU - SECUNDARI 
+<div id="manu-secundari" class="panel">
+  <h2>Manu - Secundari</h2>
+  <button class="close-btn">x</button>
+  <div class="input-area">
+    <input class="input-desc" type="text" placeholder="Descripción o nombre del producto">
+    <input class="input-url" type="url" placeholder="URL o enlace (opcional)">
+    <input class="input-img" type="text" placeholder="URL imagen (opcional)">
+    <button class="add-btn">Añadir</button>
+  </div>
+  <ul class="list"></ul>
+</div> -->
+
+ <div id="manu-gas" class="panel">
+      <h2>Manu-Gas</h2>
+      <button class="close-btn">x</button>
+      <p>Zona creativa tipo collage (próximamente)</p>
+    </div>
+
+
+<!-- CASA - PRECIS 
+<div id="casa-precis" class="panel">
+  <h2>Casa - Precís</h2>
+  <button class="close-btn">x</button>
+  <div class="input-area">
+    <input class="input-desc" type="text" placeholder="Descripción o nombre del producto">
+    <input class="input-url" type="url" placeholder="URL o enlace (opcional)">
+    <input class="input-img" type="text" placeholder="URL imagen (opcional)">
+    <button class="add-btn">Añadir</button>
+  </div>
+  <ul class="list"></ul>
+</div> -->
+
+<!-- CASA - SECUNDARI
+<div id="casa-secundari" class="panel">
+  <h2>Casa - Secundari</h2>
+  <button class="close-btn">x</button>
+  <div class="input-area">
+    <input class="input-desc" type="text" placeholder="Descripción o nombre del producto">
+    <input class="input-url" type="url" placeholder="URL o enlace (opcional)">
+    <input class="input-img" type="text" placeholder="URL imagen (opcional)">
+    <button class="add-btn">Añadir</button>
+  </div>
+  <ul class="list"></ul>
+</div>
+  </section> -->
+
+   <div id="casa-top" class="panel">
+      <h2>Casa-Top</h2>
+      <button class="close-btn">x</button>
+      <p>Zona creativa tipo collage (próximamente)</p>
+    </div>
+
+
+<!-- Otros scripts -->
+<script src="script.js"></script>
+
+<!-- Script para cerrar paneles -->
+<script>
+document.querySelectorAll('.panel .close-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+        const panel = btn.parentElement;
+        panel.classList.remove('active');
+    });
+});
+</script>
+<!-- PANEL CARRITO -->
+<div id="carrito-panel" class="carrito-panel">
+    <div class="carrito-header">
+        <h2>Compres del mes</h2>
+        <button id="cerrar-carrito" class="cerrar-carrito">×</button>
+    </div>
+    <ul id="carrito-lista"></ul>
+    <button id="vaciar-carrito" class="vaciar-carrito">Vaciar carrito</button>
+</div>
+<script>
+    const carritoBtn = document.querySelector('.user-menu a:last-child');
+    const carritoPanel = document.getElementById('carrito-panel');
+    const cerrarCarritoBtn = document.getElementById('cerrar-carrito');
+    const vaciarCarritoBtn = document.getElementById('vaciar-carrito');
+    const carritoLista = document.getElementById('carrito-lista');
+
+    // Abrir carrito
+    carritoBtn.addEventListener('click', e => {
+        e.preventDefault();
+        carritoPanel.classList.add('activo');
+    });
+
+    // Cerrar carrito
+    cerrarCarritoBtn.addEventListener('click', () => {
+        carritoPanel.classList.remove('activo');
+    });
+
+    // Vaciar carrito
+    vaciarCarritoBtn.addEventListener('click', () => {
+        carritoLista.innerHTML = '';
+        localStorage.removeItem('carrito');
+    });
+
+    // Cargar carrito desde localStorage
+    document.addEventListener('DOMContentLoaded', () => {
+        const guardado = JSON.parse(localStorage.getItem('carrito')) || [];
+        guardado.forEach(item => agregarAlCarrito(item));
+    });
+
+    // Función global (se usará desde otras páginas)
+    function agregarAlCarrito(item) {
+        const li = document.createElement('li');
+        li.innerHTML = `
+            <span>${item.nombre}</span>
+            ${item.imagen ? `<img src="${item.imagen}" alt="${item.nombre}">` : ''}
+        `;
+        carritoLista.appendChild(li);
+
+        // Guardar en localStorage
+        const actual = JSON.parse(localStorage.getItem('carrito')) || [];
+        actual.push(item);
+        localStorage.setItem('carrito', JSON.stringify(actual));
+    }
+</script>
+<script>
+    const wishlistItems = document.getElementById('wishlist-items');
+
+    // Cargar lista desde localStorage
+    document.addEventListener('DOMContentLoaded', () => {
+        const guardado = JSON.parse(localStorage.getItem('wishlist')) || [];
+        guardado.forEach(item => mostrarWishlist(item));
+    });
+
+    // Mostrar producto en el panel
+    function mostrarWishlist(item) {
+        const li = document.createElement('li');
+        li.innerHTML = `
+            <span>${item.nombre}</span>
+            ${item.imagen ? `<img src="${item.imagen}" alt="${item.nombre}">` : ''}
+        `;
+        wishlistItems.appendChild(li);
+    }
+
+    // Añadir producto a la lista (se usará desde las páginas de listas)
+    function agregarAWishlist(item) {
+        mostrarWishlist(item);
+        const actual = JSON.parse(localStorage.getItem('wishlist')) || [];
+        actual.push(item);
+        localStorage.setItem('wishlist', JSON.stringify(actual));
+    }
+</script>
+<script>
+    const panels = {
+        'Amparo': document.getElementById('wishlist-amparo'),
+        'Manu': document.getElementById('wishlist-manu'),
+        'Casa': document.getElementById('wishlist-casa')
+    };
+
+    // Mostrar solo el panel correspondiente
+    document.querySelectorAll('.dropdown .dropdown-btn').forEach(btn => {
+        btn.addEventListener('click', e => {
+            const nombre = e.target.textContent.trim();
+            Object.values(panels).forEach(p => p.style.display = 'none');
+            if (panels[nombre]) {
+                panels[nombre].style.display = 'block';
+            }
+        });
+    });
+</script>
+<script>
+const wishlistPanel = document.getElementById('wishlist-panel');
+const wishlistTitle = document.getElementById('wishlist-title');
+const wishlistList = document.getElementById('wishlist-list');
+const closeBtn = wishlistPanel.querySelector('.close-btn');
+
+// Mostrar el panel cuando se selecciona una lista concreta
+document.querySelectorAll('.dropdown .dropdown-content a').forEach(link => {
+    link.addEventListener('click', e => {
+        e.preventDefault();
+
+        // Cerrar cualquier otro menú
+        document.querySelectorAll('.dropdown').forEach(d => d.classList.remove('active'));
+
+        // Cambiar el título según la lista
+        const texto = link.textContent.trim();
+        const grupo = link.closest('.dropdown').querySelector('.dropdown-btn').textContent.trim();
+        wishlistTitle.textContent = `${grupo} – ${texto}`;
+
+        // Mostrar el panel
+        wishlistPanel.style.display = 'block';
+    });
+});
+
+// Cerrar con la X
+closeBtn.addEventListener('click', () => {
+    wishlistPanel.style.display = 'none';
+});
+
+// Cerrar el panel si se selecciona otra persona o menú
+document.querySelectorAll('.dropdown-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+        wishlistPanel.style.display = 'none';
+    });
+});
+</script>
+<script>
+const form = document.getElementById('wishlist-form');
+const itemName = document.getElementById('item-name');
+const itemUrl = document.getElementById('item-url');
+const itemImage = document.getElementById('item-image');
+const itemPrice = document.getElementById('item-price');
+
+form.addEventListener('submit', e => {
+    e.preventDefault();
+
+    const grupo = wishlistTitle.textContent; // ej: "Amparo – Es precís"
+
+    const nuevoItem = {
+        nombre: itemName.value,
+        url: itemUrl.value,
+        imagen: itemImage.value,
+        precio: itemPrice.value,
+        grupo: grupo
+    };
+
+    // Guardar en localStorage
+    const lista = JSON.parse(localStorage.getItem('wishlist')) || [];
+    lista.push(nuevoItem);
+    localStorage.setItem('wishlist', JSON.stringify(lista));
+
+    // Mostrar en el panel
+    mostrarItem(nuevoItem);
+
+    // Limpiar formulario
+    form.reset();
+});
+
+// Función para mostrar un item en el panel
+function mostrarItem(item) {
+    // Solo mostrar si pertenece al grupo actual
+    if(item.grupo !== wishlistTitle.textContent) return;
+
+    const li = document.createElement('li');
+    li.innerHTML = `
+        <span>${item.nombre}${item.precio ? ' – €'+item.precio : ''}</span>
+        ${item.imagen ? `<img src="${item.imagen}" alt="${item.nombre}">` : ''}
+        ${item.url ? `<a href="${item.url}" target="_blank">🔗</a>` : ''}
+        <button class="remove-btn">🗑</button>
+    `;
+    wishlistList.appendChild(li);
+
+    // Botón de eliminar
+    li.querySelector('.remove-btn').addEventListener('click', () => {
+        li.remove();
+        const lista = JSON.parse(localStorage.getItem('wishlist')) || [];
+        const nuevaLista = lista.filter(i => !(i.nombre === item.nombre && i.grupo === item.grupo));
+        localStorage.setItem('wishlist', JSON.stringify(nuevaLista));
+    });
+}
+
+// Cargar items guardados al abrir panel
+function cargarItems() {
+    wishlistList.innerHTML = '';
+    const lista = JSON.parse(localStorage.getItem('wishlist')) || [];
+    lista.forEach(item => mostrarItem(item));
+}
+
+// Cada vez que se abre el panel, cargar los items del grupo
+document.querySelectorAll('.dropdown .dropdown-content a').forEach(link => {
+    link.addEventListener('click', () => {
+        cargarItems();
+    });
+});
+</script>
+<div id="img-modal" class="img-modal">
+    <img src="" alt="Ampliada">
+</div>
+</body>
+</html>
